@@ -1,0 +1,36 @@
+<svg width="100%" viewBox="0 0 680 420" xmlns="http://www.w3.org/2000/svg" style="font-family:sans-serif;background:#fafafa">
+<rect width="680" height="420" fill="#fafafa" rx="12"/>
+<defs><marker id="a" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M2 1L8 5L2 9" fill="none" stroke="context-stroke" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></marker></defs>
+<text font-size="13" font-weight="600" x="340" y="28" text-anchor="middle" fill="#1a1a1a">Project 9 — IMF World Economic Outlook ELT Pipeline (DuckDB + BigQuery)</text>
+<text font-size="11" fill="#888" x="28" y="82" text-anchor="middle">Extract</text>
+<text font-size="11" fill="#888" x="28" y="168" text-anchor="middle">Raw Zone</text>
+<text font-size="11" fill="#888" x="28" y="258" text-anchor="middle">Transform</text>
+<text font-size="11" fill="#888" x="28" y="338" text-anchor="middle">Load</text>
+<line x1="55" y1="110" x2="645" y2="110" stroke="#e0e0e0" stroke-width="0.5" stroke-dasharray="4 3"/>
+<line x1="55" y1="208" x2="645" y2="208" stroke="#e0e0e0" stroke-width="0.5" stroke-dasharray="4 3"/>
+<line x1="55" y1="298" x2="645" y2="298" stroke="#e0e0e0" stroke-width="0.5" stroke-dasharray="4 3"/>
+<rect x="62" y="50" width="520" height="48" rx="8" fill="#E1F5EE" stroke="#0F6E56" stroke-width="0.5"/>
+<text font-size="12" font-weight="600" x="322" y="70" text-anchor="middle" fill="#085041">IMF DataMapper API</text>
+<text font-size="11" x="322" y="88" text-anchor="middle" fill="#0F6E56">imf.org/external/datamapper/api/v1 · free · no key · 8 indicators × 190 countries × 25 years</text>
+<line x1="322" y1="98" x2="322" y2="128" stroke="#0F6E56" stroke-width="1.5" marker-end="url(#a)"/>
+<rect x="62" y="128" width="520" height="60" rx="8" fill="#F1EFE8" stroke="#5F5E5A" stroke-width="0.5"/>
+<text font-size="12" font-weight="600" x="322" y="148" text-anchor="middle" fill="#444441">Amazon S3 — Raw Zone (Parquet)</text>
+<text font-size="11" x="322" y="166" text-anchor="middle" fill="#5F5E5A">imf/raw/indicators/dt=YYYY-MM-DD/*.parquet · immutable · partitioned by batch date</text>
+<rect x="484" y="128" width="98" height="60" rx="6" fill="#FAEEDA" stroke="#854F0B" stroke-width="0.5"/>
+<text font-size="11" font-weight="600" x="533" y="152" text-anchor="middle" fill="#633806">Airflow</text>
+<text font-size="10" x="533" y="168" text-anchor="middle" fill="#854F0B">daily 04:00 WIB</text>
+<line x1="322" y1="188" x2="322" y2="218" stroke="#5F5E5A" stroke-width="1.5" marker-end="url(#a)"/>
+<rect x="62" y="218" width="520" height="68" rx="8" fill="#EEEDFE" stroke="#534AB7" stroke-width="0.5"/>
+<text font-size="12" font-weight="600" x="322" y="238" text-anchor="middle" fill="#3C3489">DuckDB (Local In-Memory Transform)</text>
+<text font-size="11" x="322" y="256" text-anchor="middle" fill="#534AB7">reads S3 Parquet via httpfs · PIVOT indicators · enrich · health score composite</text>
+<text font-size="11" x="322" y="274" text-anchor="middle" fill="#534AB7">income group classification · no cluster needed · &lt;2s for 50,000 rows</text>
+<line x1="322" y1="286" x2="322" y2="308" stroke="#534AB7" stroke-width="1.5" marker-end="url(#a)"/>
+<rect x="62" y="308" width="520" height="68" rx="8" fill="#E6F1FB" stroke="#185FA5" stroke-width="0.5"/>
+<text font-size="12" font-weight="600" x="322" y="328" text-anchor="middle" fill="#0C447C">Google BigQuery</text>
+<text font-size="11" x="322" y="346" text-anchor="middle" fill="#185FA5">imf_economic_analytics.weo_enriched · partitioned by batch_date</text>
+<text font-size="11" x="322" y="364" text-anchor="middle" fill="#185FA5">DELETE + INSERT idempotent · ~50,000 rows/run</text>
+<rect x="195" y="390" width="140" height="20" rx="4" fill="#EEEDFE" stroke="#534AB7" stroke-width="0.5"/>
+<text font-size="10" x="265" y="404" text-anchor="middle" fill="#3C3489">ELT pattern: load raw first</text>
+<rect x="345" y="390" width="140" height="20" rx="4" fill="#E1F5EE" stroke="#0F6E56" stroke-width="0.5"/>
+<text font-size="10" x="415" y="404" text-anchor="middle" fill="#085041">DuckDB = zero infra cost</text>
+</svg>

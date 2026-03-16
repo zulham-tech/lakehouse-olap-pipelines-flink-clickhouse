@@ -1,0 +1,56 @@
+<svg width="100%" viewBox="0 0 680 480" xmlns="http://www.w3.org/2000/svg" style="font-family:sans-serif;background:#fafafa">
+<rect width="680" height="480" fill="#fafafa" rx="12"/>
+<defs><marker id="a" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M2 1L8 5L2 9" fill="none" stroke="context-stroke" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></marker></defs>
+<text font-size="13" font-weight="600" x="340" y="28" text-anchor="middle" fill="#1a1a1a">Project 10 — Wikimedia Trending Topics (Flink + Cassandra + Snowflake)</text>
+<!-- Sources -->
+<rect x="62" y="46" width="240" height="52" rx="8" fill="#FAECE7" stroke="#993C1D" stroke-width="0.5"/>
+<text font-size="12" font-weight="600" x="182" y="66" text-anchor="middle" fill="#712B13">Wikimedia Pageviews API</text>
+<text font-size="11" x="182" y="84" text-anchor="middle" fill="#993C1D">top 50 articles × 10 languages · daily</text>
+<rect x="378" y="46" width="240" height="52" rx="8" fill="#E1F5EE" stroke="#0F6E56" stroke-width="0.5"/>
+<text font-size="12" font-weight="600" x="498" y="66" text-anchor="middle" fill="#085041">Wikimedia SSE Stream</text>
+<text font-size="11" x="498" y="84" text-anchor="middle" fill="#0F6E56">live edit events · true real-time push</text>
+<text font-size="10" fill="#888" x="340" y="62">free · no key</text>
+<!-- Arrows to Kafka -->
+<path d="M182 98 L182 120 L220 120 L220 134" fill="none" stroke="#993C1D" stroke-width="1.2" marker-end="url(#a)"/>
+<path d="M498 98 L498 120 L460 120 L460 134" fill="none" stroke="#0F6E56" stroke-width="1.2" marker-end="url(#a)"/>
+<!-- Kafka -->
+<rect x="62" y="134" width="240" height="42" rx="8" fill="#EEEDFE" stroke="#534AB7" stroke-width="0.5"/>
+<text font-size="11" font-weight="600" x="182" y="160" text-anchor="middle" fill="#3C3489">Kafka: pageviews</text>
+<rect x="378" y="134" width="240" height="42" rx="8" fill="#EEEDFE" stroke="#534AB7" stroke-width="0.5"/>
+<text font-size="11" font-weight="600" x="498" y="160" text-anchor="middle" fill="#3C3489">Kafka: recentchanges</text>
+<!-- Arrows to Flink/Spark -->
+<line x1="182" y1="176" x2="182" y2="206" stroke="#534AB7" stroke-width="1.2" marker-end="url(#a)"/>
+<line x1="498" y1="176" x2="498" y2="206" stroke="#534AB7" stroke-width="1.2" marker-end="url(#a)"/>
+<!-- Processing -->
+<rect x="62" y="206" width="240" height="52" rx="8" fill="#E6F1FB" stroke="#185FA5" stroke-width="0.5"/>
+<text font-size="11" font-weight="600" x="182" y="226" text-anchor="middle" fill="#0C447C">PySpark Batch</text>
+<text font-size="10" x="182" y="244" text-anchor="middle" fill="#185FA5">daily views · YoY change %</text>
+<rect x="378" y="206" width="240" height="52" rx="8" fill="#E1F5EE" stroke="#0F6E56" stroke-width="0.5"/>
+<text font-size="11" font-weight="600" x="498" y="226" text-anchor="middle" fill="#085041">Apache Flink</text>
+<text font-size="10" x="498" y="244" text-anchor="middle" fill="#0F6E56">10-min window · trending score</text>
+<!-- Airflow -->
+<rect x="290" y="210" width="90" height="44" rx="6" fill="#FAEEDA" stroke="#854F0B" stroke-width="0.5"/>
+<text font-size="10" font-weight="600" x="335" y="228" text-anchor="middle" fill="#633806">Airflow</text>
+<text font-size="9" x="335" y="244" text-anchor="middle" fill="#854F0B">2 DAGs</text>
+<!-- Arrows to stores -->
+<line x1="182" y1="258" x2="182" y2="288" stroke="#185FA5" stroke-width="1.5" marker-end="url(#a)"/>
+<line x1="498" y1="258" x2="498" y2="288" stroke="#0F6E56" stroke-width="1.5" marker-end="url(#a)"/>
+<!-- Stores -->
+<rect x="62" y="288" width="240" height="72" rx="8" fill="#E6F1FB" stroke="#185FA5" stroke-width="0.5"/>
+<text font-size="12" font-weight="600" x="182" y="308" text-anchor="middle" fill="#0C447C">Snowflake</text>
+<text font-size="10" x="182" y="326" text-anchor="middle" fill="#185FA5">WIKIMEDIA_DW.ANALYTICS</text>
+<text font-size="10" x="182" y="342" text-anchor="middle" fill="#185FA5">ARTICLE_PAGEVIEWS</text>
+<text font-size="10" x="182" y="358" text-anchor="middle" fill="#185FA5">clustered by language + date</text>
+<rect x="378" y="288" width="240" height="72" rx="8" fill="#FAECE7" stroke="#993C1D" stroke-width="0.5"/>
+<text font-size="12" font-weight="600" x="498" y="308" text-anchor="middle" fill="#712B13">Apache Cassandra</text>
+<text font-size="10" x="498" y="326" text-anchor="middle" fill="#993C1D">trending_articles (TTL 24h)</text>
+<text font-size="10" x="498" y="342" text-anchor="middle" fill="#993C1D">article_pageviews</text>
+<text font-size="10" x="498" y="358" text-anchor="middle" fill="#993C1D">trending_score DESC cluster</text>
+<!-- Serving bar -->
+<rect x="62" y="380" width="556" height="60" rx="8" fill="#E1F5EE" stroke="#0F6E56" stroke-width="0.5"/>
+<text font-size="12" font-weight="600" x="340" y="400" text-anchor="middle" fill="#085041">Lambda Serving Layer</text>
+<text font-size="11" x="200" y="420" text-anchor="middle" fill="#0F6E56">"Top trending NOW?" → Cassandra ms</text>
+<text font-size="11" x="490" y="420" text-anchor="middle" fill="#185FA5">"30-day trends?" → Snowflake analytics</text>
+<path d="M182 360 L182 370 L340 370 L340 380" fill="none" stroke="#185FA5" stroke-width="1" stroke-dasharray="3 2" marker-end="url(#a)"/>
+<path d="M498 360 L498 370 L340 370" fill="none" stroke="#993C1D" stroke-width="1" stroke-dasharray="3 2" marker-end="url(#a)"/>
+</svg>
