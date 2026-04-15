@@ -182,4 +182,4 @@ Articles with high edit velocity (especially non-bot) = breaking news or trendin
 ---
 
 *Ahmad Zulham Hamdan | Data Engineer | Kafka · PySpark · Airflow · Delta Lake · Flink · Elasticsearch · DuckDB*  
-*📧 zulham.va@gmail.com | 🔗 linkedin.com/in/ahmad-zulham-hamdan-665170279*
+*📧 zulham.va@gmail.com | 🔗 linkedin.com/in/ahmad-zulham-665170279*
